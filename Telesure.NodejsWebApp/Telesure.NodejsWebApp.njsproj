@@ -31,6 +31,11 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".dockerignore">
+      <SubType>Content</SubType>
+      <DependentUpon>Dockerfile</DependentUpon>
+    </Content>
+    <None Include="Dockerfile" />
     <Content Include="index.html">
       <SubType>Code</SubType>
     </Content>
