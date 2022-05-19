@@ -9,7 +9,7 @@
     "node": "~6.10.x"
   },
   "author": {
-    "name": ""
+    "name": "Hugh Murdoch"
   },
   "dependencies": {
     "express": "^4.18.1",
