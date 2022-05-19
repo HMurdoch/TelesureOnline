@@ -1,0 +1,3 @@
+C:\Users\Quadravex\source\repos\Telesure\Telesure.NodejsWebApp\obj\Debug\Telesure.NodejsWebApp.njsproj.AssemblyReference.cache
+C:\Users\Quadravex\source\repos\Telesure\Telesure.NodejsWebApp\obj\Debug\Telesure.NodejsWebApp.njsproj.CoreCompileInputs.cache
+C:\Users\Quadravex\source\repos\Telesure\Telesure.NodejsWebApp\bin\Microsoft.NodejsTools.WebRole.dll
