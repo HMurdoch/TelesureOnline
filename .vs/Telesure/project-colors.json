@@ -5,7 +5,17 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "c4774678-1a07-4183-b79b-e73f0694b061": {
+      "ProjectGuid": "c4774678-1a07-4183-b79b-e73f0694b061",
+      "DisplayName": "Telesure",
+      "ColorIndex": 0
+    },
+    "3f6a3e15-8444-4209-a445-7bcc79ebc90f": {
+      "ProjectGuid": "3f6a3e15-8444-4209-a445-7bcc79ebc90f",
+      "DisplayName": "Telesure.NodejsWebApp",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 0
+  "NextColorIndex": 2
 }
