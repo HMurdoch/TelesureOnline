@@ -3,6 +3,8 @@ const mssql = require('mssql')
 
 const router = express.Router();
 
+let pow = "";
+
 const config = {
     driver: process.env.SQL_DRIVER,
     server: process.env.SQL_SERVER,
@@ -17,10 +19,12 @@ const config = {
 };
 const pool = new mssql.ConnectionPool(config);
 
-router.get('/', async (req, res) => {
+router.get('/nouns/', async (req, res) => {
     try {
+        pow = "n.";
+        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
         await pool.connect();
-        const result = await pool.request().query(`SELECT TOP 10 * FROM dbo.entries`);
+        const result = await pool.request().query(query);
         const employees = result.recordset;
 
         res.json(employees);
