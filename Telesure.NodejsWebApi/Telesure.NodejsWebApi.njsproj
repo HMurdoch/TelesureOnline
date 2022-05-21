@@ -12,7 +12,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>db85281f-71cc-473b-9fbd-22d3f9a4fab3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>app.js</StartupFile>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -32,21 +33,18 @@
     <Content Include=".env">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="app.js" />
     <Content Include="data-access.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="definitions\nouns.js">
+    <Content Include="definitions\nouns.rest">
       <SubType>Code</SubType>
     </Content>
     <Content Include="package-tedious.json" />
-    <Content Include="routes\index.js" />
-    <Content Include="routes\nouns-verbs-template.js" />
-    <Content Include="routes\nouns-tedious.js" />
-    <Content Include="routes\nouns.js">
+    <Content Include="api\index.js" />
+    <Content Include="api\nouns.js">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="routes\users.js" />
+    <Content Include="api\users.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
@@ -63,7 +61,7 @@
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
     <Folder Include="public\stylesheets\" />
-    <Folder Include="routes\" />
+    <Folder Include="api\" />
     <Folder Include="views\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
