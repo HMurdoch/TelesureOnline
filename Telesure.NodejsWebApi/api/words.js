@@ -17,31 +17,36 @@ const config = {
         rowCollectionOnRequestCompletion: true
     },
 };
-const pool = new mssql.ConnectionPool(config);
+
 
 router.get('/nouns/', async (req, res) => {
     pow = "n.";
-    getWordsByPOS(res, pow);
+    getWordsByPOS(pow);
 });
 
 router.get('/verbs/', async (req, res) => {
     pow = "v.";
-    getWordsByPOS(res, pow);
+    getWordsByPOS(pow);
 });
 
 router.get('/adjectives/', async (req, res) => {
     pow = "a.";
-    getWordsByPOS(res, pow);
+    getWordsByPOS(pow);
 });
 
-function getWordsByPOS(res, pow) {
+function getWordsByPOS (pow) {
     try {
-        var query = `SELECT * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
-        await pool.connect();
-        const result = await pool.request().query(query);
-        const words = result.recordset;
+        async (req, res) => {
+            pow = "a.";
+            getWordsByPOS(res, pow);
+            const pool = new mssql.ConnectionPool(config);
+            var query = `SELECT * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+            await pool.connect();
+            const result = await pool.request().query(query);
+            const words = result.recordset;
 
-        res.json(words);
+            res.json(words);
+        }
     } catch (error) {
         res.status(500).json(error);
     }
