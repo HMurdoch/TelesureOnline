@@ -1,0 +1,4 @@
+#### Employee API
+
+#### Get All Employees
+GET http://localhost:5000/api/nouns
