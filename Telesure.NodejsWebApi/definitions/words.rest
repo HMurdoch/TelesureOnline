@@ -1,0 +1,10 @@
+#### Employee API
+
+#### Get All Nouns
+GET http://localhost:5000/api/nouns
+
+#### Get All Verbs
+GET http://localhost:5000/api/verbs
+
+#### Get All Adjectives
+GET http://localhost:5000/api/adjectives

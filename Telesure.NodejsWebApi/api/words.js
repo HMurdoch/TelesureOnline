@@ -27,16 +27,16 @@ router.get('/adjectives/', () => {
     getWordsByPOS('a.')
 });
 
-function getWordsByPOS (pow) {
+function getWordsByPOS(pos) {
     try {
         async (req, res) => {
             const pool = new mssql.ConnectionPool(config);
-            var query = `SELECT * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+            var query = `SELECT * FROM dbo.entries WHERE wordtype LIKE ('%${pos}%');`;
             await pool.connect();
             const result = await pool.request().query(query);
             const words = result.recordset;
 
-            res.json(words);
+            res.status(200).json(words);
         }
     } catch (error) {
         res.status(500).json(error);
