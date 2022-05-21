@@ -20,17 +20,31 @@ const config = {
 const pool = new mssql.ConnectionPool(config);
 
 router.get('/nouns/', async (req, res) => {
+    pow = "n.";
+    getWordsByPOS(res, pow);
+});
+
+router.get('/verbs/', async (req, res) => {
+    pow = "v.";
+    getWordsByPOS(res, pow);
+});
+
+router.get('/adjectives/', async (req, res) => {
+    pow = "a.";
+    getWordsByPOS(res, pow);
+});
+
+function getWordsByPOS(res, pow) {
     try {
-        pow = "n.";
-        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+        var query = `SELECT * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
         await pool.connect();
         const result = await pool.request().query(query);
-        const employees = result.recordset;
+        const words = result.recordset;
 
-        res.json(employees);
+        res.json(words);
     } catch (error) {
         res.status(500).json(error);
     }
-});
+}
 
 module.exports = router;
