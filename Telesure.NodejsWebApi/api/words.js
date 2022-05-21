@@ -1,9 +1,6 @@
 const express = require('express')
 const mssql = require('mssql')
-
 const router = express.Router();
-
-let pow = "";
 
 const config = {
     driver: process.env.SQL_DRIVER,
@@ -18,27 +15,21 @@ const config = {
     },
 };
 
-
-router.get('/nouns/', async (req, res) => {
-    pow = "n.";
-    getWordsByPOS(pow);
+router.get('/nouns/', () => {
+    getWordsByPOS('n.')
 });
 
-router.get('/verbs/', async (req, res) => {
-    pow = "v.";
-    getWordsByPOS(pow);
+router.get('/verbs/', () => {
+    getWordsByPOS('v.')
 });
 
-router.get('/adjectives/', async (req, res) => {
-    pow = "a.";
-    getWordsByPOS(pow);
+router.get('/adjectives/', () => {
+    getWordsByPOS('a.')
 });
 
 function getWordsByPOS (pow) {
     try {
         async (req, res) => {
-            pow = "a.";
-            getWordsByPOS(res, pow);
             const pool = new mssql.ConnectionPool(config);
             var query = `SELECT * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
             await pool.connect();
