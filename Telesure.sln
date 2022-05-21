@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telesure", "Telesure\Telesure.csproj", "{C4774678-1A07-4183-B79B-E73F0694B061}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Telesure.NodejsWebApp", "Telesure.NodejsWebApp\Telesure.NodejsWebApp.njsproj", "{3F6A3E15-8444-4209-A445-7BCC79EBC90F}"
-EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Telesure.NodejsWebApi", "Telesure.NodejsWebApi\Telesure.NodejsWebApi.njsproj", "{DB85281F-71CC-473B-9FBD-22D3F9A4FAB3}"
 EndProject
 Global
@@ -19,10 +17,6 @@ Global
 		{C4774678-1A07-4183-B79B-E73F0694B061}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4774678-1A07-4183-B79B-E73F0694B061}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4774678-1A07-4183-B79B-E73F0694B061}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F6A3E15-8444-4209-A445-7BCC79EBC90F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F6A3E15-8444-4209-A445-7BCC79EBC90F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F6A3E15-8444-4209-A445-7BCC79EBC90F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F6A3E15-8444-4209-A445-7BCC79EBC90F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB85281F-71CC-473B-9FBD-22D3F9A4FAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB85281F-71CC-473B-9FBD-22D3F9A4FAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB85281F-71CC-473B-9FBD-22D3F9A4FAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
