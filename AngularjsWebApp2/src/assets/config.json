@@ -1,0 +1,8 @@
+{
+    "wordsNounsUrl": "http://localhost:5000/api/nouns",
+    "wordsVerbsUrl": "http://localhost:5000/api/verbs",
+    "wordsAdjectivesUrl": "http://localhost:5000/api/adjectives",
+    "wordsAdverbsUrl": "http://localhost:5000/api/adverbs",
+    "wordsPronounsUrl": "http://localhost:5000/api/pronouns",
+    "wordsPrepositionsUrl": "http://localhost:5000/api/prepositions"
+}
