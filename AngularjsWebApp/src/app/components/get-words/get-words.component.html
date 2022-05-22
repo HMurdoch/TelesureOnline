@@ -3,7 +3,7 @@
         <!-- Issue table -->
         <div class="col-md-12">
             <div class="inner">
-                <h3>My Issues</h3>
+                <h3>Words</h3>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -14,10 +14,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let words of WordsList">
-                            <th scope="row">{{words.word}}</th>
-                            <td>{{words.wordtype}}</td>
-                            <td>{{words.definition}}</td>
+                        <tr *ngFor="let word of WordsList">
+                            <th scope="row">{{word.word}}</th>
+                            <td>{{word.wordtype}}</td>
+                            <td>{{word.definition}}</td>
                             <td>
                                 <!-- <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-issue/', issues.id]">Edit</button>
                                 <button type="button" class="btn btn-danger btn-sm" (click)="deleteIusse(issues)">Remove</button> -->

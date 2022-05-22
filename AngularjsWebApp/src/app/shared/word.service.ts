@@ -16,7 +16,7 @@ export class WordService {
   // Http Headers
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     }),
   };
 
@@ -33,42 +33,49 @@ export class WordService {
 
   // GET Nouns
   GetWordsNouns(): Observable<Word> {
+    console.log('Getting nouns');
     return this.http
       .get<Word>(this.baseurl + '/nouns/')
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Verbs
   GetWordsVerbs(): Observable<Word> {
+    console.log('Getting verbs');
     return this.http
       .get<Word>(this.baseurl + '/verbs/')
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Adjectives
   GetWordsAdjectives(): Observable<Word> {
+    console.log('Getting adjectives');
     return this.http
       .get<Word>(this.baseurl + '/adjectives/')
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Adverbs
   GetWordsAdverbs(): Observable<Word> {
+    console.log('Getting adverbs');
     return this.http
       .get<Word>(this.baseurl + '/adverbs/')
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Pronouns
   GetWordsPronouns(): Observable<Word> {
+    console.log('Getting pronouns');
     return this.http
       .get<Word>(this.baseurl + '/pronouns/')
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Prepositions
-  GetWordsPrepositionss(): Observable<Word> {
+  GetWordsPrepositions(): Observable<Word> {
+    console.log('Getting prepositions');
     return this.http
       .get<Word>(this.baseurl + '/prepositions/')
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Conjunctions
   GetWordsConjunctions(): Observable<Word> {
+    console.log('Getting conjunctions');
     return this.http
       .get<Word>(this.baseurl + '/conjunctions/')
       .pipe(retry(1), catchError(this.errorHandle));
