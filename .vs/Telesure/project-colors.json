@@ -20,7 +20,12 @@
       "ProjectGuid": "db85281f-71cc-473b-9fbd-22d3f9a4fab3",
       "DisplayName": "Telesure.NodejsWebApi",
       "ColorIndex": 2
+    },
+    "734498c7-d845-4294-84f3-e56897f28c71": {
+      "ProjectGuid": "734498c7-d845-4294-84f3-e56897f28c71",
+      "DisplayName": "Telesure.AngularjsWebApp",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }
