@@ -1,6 +1,9 @@
 const express = require('express')
 const mssql = require('mssql')
+
 const router = express.Router();
+
+var pow = "";
 
 const config = {
     driver: process.env.SQL_DRIVER,
@@ -14,33 +17,104 @@ const config = {
         rowCollectionOnRequestCompletion: true
     },
 };
+const pool = new mssql.ConnectionPool(config);
 
-router.get('/nouns/', () => {
-    getWordsByPOS('n.')
-});
-
-router.get('/verbs/', () => {
-    getWordsByPOS('v.')
-});
-
-router.get('/adjectives/', () => {
-    getWordsByPOS('a.')
-});
-
-function getWordsByPOS(pos) {
+router.get('/nouns/', async (req, res) => {
     try {
-        async (req, res) => {
-            const pool = new mssql.ConnectionPool(config);
-            var query = `SELECT * FROM dbo.entries WHERE wordtype LIKE ('%${pos}%');`;
-            await pool.connect();
-            const result = await pool.request().query(query);
-            const words = result.recordset;
+        pow = "n.";
+        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+        await pool.connect();
+        const result = await pool.request().query(query);
+        const words = result.recordset;
 
-            res.status(200).json(words);
-        }
+        res.status(200).json(words);
     } catch (error) {
         res.status(500).json(error);
     }
-}
+});
+
+router.get('/verbs/', async (req, res) => {
+    try {
+        pow = "v.";
+        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+        await pool.connect();
+        const result = await pool.request().query(query);
+        const words = result.recordset;
+
+        res.status(200).json(words);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+router.get('/adjectives/', async (req, res) => {
+    try {
+        pow = "a.";
+        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+        await pool.connect();
+        const result = await pool.request().query(query);
+        const words = result.recordset;
+
+        res.status(200).json(words);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+router.get('/adverbs/', async (req, res) => {
+    try {
+        pow = "adv.";
+        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+        await pool.connect();
+        const result = await pool.request().query(query);
+        const words = result.recordset;
+
+        res.status(200).json(words);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+router.get('/pronouns/', async (req, res) => {
+    try {
+        pow = "pron.";
+        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+        await pool.connect();
+        const result = await pool.request().query(query);
+        const words = result.recordset;
+
+        res.status(200).json(words);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+router.get('/prepositions/', async (req, res) => {
+    try {
+        pow = "prep.";
+        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+        await pool.connect();
+        const result = await pool.request().query(query);
+        const words = result.recordset;
+
+        res.status(200).json(words);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+router.get('/conjunctions/', async (req, res) => {
+    try {
+        pow = "conj.";
+        let query = `SELECT TOP 20 * FROM dbo.entries WHERE wordtype LIKE ('%${pow}%');`;
+        await pool.connect();
+        const result = await pool.request().query(query);
+        const words = result.recordset;
+
+        res.status(200).json(words);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 
 module.exports = router;
