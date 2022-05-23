@@ -8,9 +8,9 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 
-export class WordService {
+export class WordsService {
   // Base url
-  baseurl = 'http://localhost:5000/api';
+  baseurl = 'http://localhost:5000/api/words';
   constructor(private http: HttpClient) {}
 
   // Http Headers

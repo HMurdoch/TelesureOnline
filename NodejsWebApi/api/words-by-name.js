@@ -38,7 +38,6 @@ router.get('/verbs/:prefix', async (req, res) => {
         pow = "v.";
         exlcude = "adv."
         let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('%${prefix}%') AND wordtype != 'adv.';`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;

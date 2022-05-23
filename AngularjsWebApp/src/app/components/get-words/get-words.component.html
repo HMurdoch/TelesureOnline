@@ -1,10 +1,9 @@
 <div class="container wrapper">
     <div class="row">
-        <!-- Issue table -->
         <div class="col-md-12">
             <div class="inner">
-                <h3>Words</h3>
-                <table class="table table-bordered">
+                <h4>Nouns</h4>
+                <table class="table table-bordered" style="font-size: 10px">
                     <thead>
                         <tr>
                             <th scope="col">Word</th>
@@ -14,7 +13,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let word of WordsList">
+                        <tr *ngFor="let word of WordsNounsList">
                             <th scope="row">{{word.word}}</th>
                             <td>{{word.wordtype}}</td>
                             <td>{{word.definition}}</td>
@@ -25,6 +24,151 @@
                         </tr>
                     </tbody>
                 </table>
+                <br /><br />
+
+                <h4>Verbs</h4>
+                <table class="table table-bordered" style="font-size: 10px">
+                    <thead>
+                        <tr>
+                            <th scope="col">Word</th>
+                            <th scope="col">Parts of Speech</th>
+                            <th scope="col">Definition</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let word of WordsVerbsList">
+                            <th scope="row">{{word.word}}</th>
+                            <td>{{word.wordtype}}</td>
+                            <td>{{word.definition}}</td>
+                            <td>
+                                <!-- <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-issue/', issues.id]">Edit</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteIusse(issues)">Remove</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br />
+
+                <h4>Adjectives</h4>
+                <table class="table table-bordered" style="font-size: 10px">
+                    <thead>
+                        <tr>
+                            <th scope="col">Word</th>
+                            <th scope="col">Parts of Speech</th>
+                            <th scope="col">Definition</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let word of WordsAdjectivesList">
+                            <th scope="row">{{word.word}}</th>
+                            <td>{{word.wordtype}}</td>
+                            <td>{{word.definition}}</td>
+                            <td>
+                                <!-- <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-issue/', issues.id]">Edit</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteIusse(issues)">Remove</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br />
+
+                <h4>Adverbs</h4>
+                <table class="table table-bordered" style="font-size: 10px">
+                    <thead>
+                        <tr>
+                            <th scope="col">Word</th>
+                            <th scope="col">Parts of Speech</th>
+                            <th scope="col">Definition</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let word of WordsAdverbsList">
+                            <th scope="row">{{word.word}}</th>
+                            <td>{{word.wordtype}}</td>
+                            <td>{{word.definition}}</td>
+                            <td>
+                                <!-- <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-issue/', issues.id]">Edit</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteIusse(issues)">Remove</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br />
+
+                <h4>Pronouns</h4>
+                <table class="table table-bordered" style="font-size: 10px">
+                    <thead>
+                        <tr>
+                            <th scope="col">Word</th>
+                            <th scope="col">Parts of Speech</th>
+                            <th scope="col">Definition</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let word of WordsPronounsList">
+                            <th scope="row">{{word.word}}</th>
+                            <td>{{word.wordtype}}</td>
+                            <td>{{word.definition}}</td>
+                            <td>
+                                <!-- <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-issue/', issues.id]">Edit</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteIusse(issues)">Remove</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br />
+              
+                <h4>Prepositions</h4>
+                <table class="table table-bordered" style="font-size: 10px">
+                    <thead>
+                        <tr>
+                            <th scope="col">Word</th>
+                            <th scope="col">Parts of Speech</th>
+                            <th scope="col">Definition</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let word of WordsPrepositionsList">
+                            <th scope="row">{{word.word}}</th>
+                            <td>{{word.wordtype}}</td>
+                            <td>{{word.definition}}</td>
+                            <td>
+                                <!-- <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-issue/', issues.id]">Edit</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteIusse(issues)">Remove</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br />
+
+                <h4>Conjunctions</h4>
+                <table class="table table-bordered" style="font-size: 10px">
+                    <thead>
+                        <tr>
+                            <th scope="col">Word</th>
+                            <th scope="col">Parts of Speech</th>
+                            <th scope="col">Definition</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let word of WordsConjunctionsList">
+                            <th scope="row">{{word.word}}</th>
+                            <td>{{word.wordtype}}</td>
+                            <td>{{word.definition}}</td>
+                            <td>
+                                <!-- <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-issue/', issues.id]">Edit</button>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="deleteIusse(issues)">Remove</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br />
             </div>
         </div>
     </div>

@@ -8,7 +8,7 @@ import { GetWordsComponent } from './components/get-words/get-words.component';
 import { GetWordsByNameComponent } from './components/get-words-by-name/get-words-by-name.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { WordService } from './word.service';
+import { WordsService } from './words.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { WordService } from './word.service';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [WordService],
+  providers: [WordsService],
   bootstrap: [AppComponent]
 })
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WordService } from '../../shared/word.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { WordsService } from '../../shared/words.service';
 
 @Component({
   selector: 'app-get-words',
@@ -9,59 +7,65 @@ import { Router } from '@angular/router';
   styleUrls: ['./get-words.component.css']
 })
 export class GetWordsComponent implements OnInit {
-  WordsList: any = [];
+  WordsNounsList: any = [];
+  WordsVerbsList: any = [];
+  WordsAdjectivesList: any = [];
+  WordsAdverbsList: any = [];
+  WordsPronounsList: any = [];
+  WordsPrepositionsList: any = [];
+  WordsConjunctionsList: any = [];
 
-  constructor(public wordService: WordService) { }
+  constructor(public wordsService: WordsService) { }
 
   ngOnInit(): void {
     this.loadWordsNouns();
-    // this.loadWordsVerbs();
-    // this.loadWordsAdjectives();
-    // this.loadWordsAdverbs();
-    // this.loadWordsPronouns();
-    // this.loadWordsPrepositions();
-    // this.loadWordsConjunctions();
+    this.loadWordsVerbs();
+    this.loadWordsAdjectives();
+    this.loadWordsAdverbs();
+    this.loadWordsPronouns();
+    this.loadWordsPrepositions();
+    this.loadWordsConjunctions();
   }
 
   loadWordsNouns() {
-    return this.wordService.GetWordsNouns().subscribe((data: {}) => {
-      this.WordsList = data;
+    return this.wordsService.GetWordsNouns().subscribe((data: {}) => {
+      this.WordsNounsList = data;
     });  
   }
 
   loadWordsVerbs() {
-    return this.wordService.GetWordsVerbs().subscribe((data: {}) => {
-      this.WordsList = data;
+    return this.wordsService.GetWordsVerbs().subscribe((data: {}) => {
+      this.WordsVerbsList = data;
     });  
   }
 
   loadWordsAdjectives() {
-    return this.wordService.GetWordsAdjectives().subscribe((data: {}) => {
-      this.WordsList = data;
+    return this.wordsService.GetWordsAdjectives().subscribe((data: {}) => {
+      this.WordsAdjectivesList = data;
     });  
   }
 
   loadWordsAdverbs() {
-    return this.wordService.GetWordsAdverbs().subscribe((data: {}) => {
-      this.WordsList = data;
+    return this.wordsService.GetWordsAdverbs().subscribe((data: {}) => {
+      this.WordsAdverbsList = data;
     });  
   }
 
   loadWordsPronouns() {
-    return this.wordService.GetWordsPronouns().subscribe((data: {}) => {
-      this.WordsList = data;
+    return this.wordsService.GetWordsPronouns().subscribe((data: {}) => {
+      this.WordsPronounsList = data;
     });  
   }
 
   loadWordsPrepositions() {
-    return this.wordService.GetWordsPrepositionss().subscribe((data: {}) => {
-      this.WordsList = data;
+    return this.wordsService.GetWordsPrepositions().subscribe((data: {}) => {
+      this.WordsPrepositionsList = data;
     });  
   }
 
   loadWordsConjunctions() {
-    return this.wordService.GetWordsConjunctions().subscribe((data: {}) => {
-      this.WordsList = data;
+    return this.wordsService.GetWordsConjunctions().subscribe((data: {}) => {
+      this.WordsConjunctionsList = data;
     });  
   }
 }
