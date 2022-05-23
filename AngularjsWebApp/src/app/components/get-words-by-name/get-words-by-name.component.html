@@ -1,1 +1,40 @@
-<p>get-words-by-name works!</p>
+<div class="container wrapper">
+    <form [formGroup]="wordForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+            <div class="col-md-12">
+                <div class="inner">
+                    <h4>Nouns</h4>
+                    <div>
+                        <label for="name">
+                        Nouns Prefix:
+                        </label>
+                        <input id="wordPrefixNoun" type="text" formControlName="wordPrefixNoun" (change)="loadWordsByNameNouns(wordPrefixNoun.value)">
+                        <button class="button" (click)="loadWordsByNameNouns(wordPrefixNoun.value)">Get Words</button>
+                    </div>
+                    <table class="table table-bordered" style="font-size: 10px">
+                        <thead>
+                            <tr>
+                                <th scope="col">Word</th>
+                                <th scope="col">Parts of Speech</th>
+                                <th scope="col">Definition</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let word of WordsByNameNounsList">
+                                <th scope="row">{{word.word}}</th>
+                                <td>{{word.wordtype}}</td>
+                                <td>{{word.definition}}</td>
+                                <td>
+                                    <!-- <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-issue/', issues.id]">Edit</button>
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="deleteIusse(issues)">Remove</button> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br /><br />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

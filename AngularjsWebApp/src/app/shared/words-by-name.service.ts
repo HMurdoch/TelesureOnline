@@ -24,11 +24,11 @@ export class WordsByNameService {
   GetWordsByNameNouns(prefix: string): Observable<Word> {
     console.log('Getting nouns');
     prefix = prefix.trim();
-    const options = prefix ?
-     { params: new HttpParams().set('prefix', prefix) } : {};
+    // const options = prefix ?
+    //  { params: new HttpParams().set('prefix', prefix) } : {};
 
     return this.http
-      .get<Word>(this.baseurl + '/nouns/', options)
+      .get<Word>(this.baseurl + '/nouns/' + prefix)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Verbs

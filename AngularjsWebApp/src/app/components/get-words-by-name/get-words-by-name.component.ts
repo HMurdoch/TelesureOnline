@@ -1,5 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { WordsByNameService } from '../../shared/words-by-name.service';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class Service {
+//   constructor(private http: HttpClient) { }
+
+//   opts = [];
+
+//   getData() {
+//     return this.opts.length ?
+//       of(this.opts) :
+//       this.http.get<any>('http://localhost:5000/api/words-by-name/nouns/ab').pipe(tap(data => this.opts = data))
+//   }
+// }
 
 @Component({
   selector: 'app-get-words-by-name',
@@ -15,21 +31,51 @@ export class GetWordsByNameComponent implements OnInit {
   WordsPronounsList: any = [];
   WordsPrepositionsList: any = [];
   WordsConjunctionsList: any = [];
-
-  constructor(public wordsByNameService: WordsByNameService) { }
-
-  ngOnInit(): void {
-    this.loadWordsByNameNouns();
-    this.loadWordsByNameVerbs();
-    this.loadWordsByNameAdjectives();
-    this.loadWordsByNameAdverbs();
-    this.loadWordsByNamePronouns();
-    this.loadWordsByNamePrepositions();
-    this.loadWordsByNameConjunctions();
+  wordForm: FormGroup;
+  wordPrefixNoun: FormControl;
+  
+  constructor(public wordsByNameService: WordsByNameService, public formBuilder: FormBuilder) {
   }
 
-  loadWordsByNameNouns(data) {
-    return this.wordsByNameService.GetWordsByNameNouns(data.prefix).subscribe((data: {}) => {
+  ngOnInit(): void {
+    this.createFormControls();
+    this.createForm();
+   //this.loadWordsByNameNouns();
+    // this.loadWordsByNameVerbs();
+    // this.loadWordsByNameAdjectives();
+    // this.loadWordsByNameAdverbs();
+    // this.loadWordsByNamePronouns();
+    // this.loadWordsByNamePrepositions();
+    // this.loadWordsByNameConjunctions();
+  }
+
+  createFormControls() {
+    this.wordPrefixNoun = new FormControl("");
+  }
+
+  createForm() {
+    this.wordForm = new FormGroup({
+      wordPrefixNoun: this.wordPrefixNoun
+    });
+  }
+
+  // filter(val: string): Observable<any[]> {
+  // // call the service which makes the http-request
+  //   return this.service.getData()
+  //     .pipe(
+  //       map(response => response.filter(option => { 
+  //         return option.name.toLowerCase().indexOf(val.toLowerCase()) === 0
+  //       }))
+  //     )
+  // }  
+
+
+  onSubmit() {
+    //this.loadWordsByNameNouns(this.wordForm.controls['wordPrefixNoun'].value)
+  }
+
+  loadWordsByNameNouns(prefix: string) {
+    return this.wordsByNameService.GetWordsByNameNouns(prefix).subscribe((data: {}) => {
       this.WordsByNameNounsList = data;
     });  
   }
