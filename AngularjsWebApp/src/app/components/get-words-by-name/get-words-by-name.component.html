@@ -1,23 +1,52 @@
-<div class="container wrapper">
-    <form [formGroup]="wordForm" (ngSubmit)="onSubmit()">
-            <div class="row">
-            <div class="col-md-12">
-                <div class="inner">
-                    <h4>Nouns</h4>
-                    <div>
-                        <label for="name">
-                        Nouns:
-                        </label>
-                        <input id="wordPrefixNoun" type="text" formControlName="wordPrefixNoun" (change)="loadWordsByNameNouns(wordPrefixNoun.value)">
-                        <button class="button" (click)="loadWordsByNameNouns(wordPrefixNoun.value)">Get Words</button>
-                        <select *ngIf="!WordsByNameNounsList || WordsByNameNounsList.length > 0">
-                            <option scope="row" *ngFor="let word of WordsByNameNounsList">{{word.word}}</option>
-                        </select>
-                        <button class="button" [disabled]="!WordsByNameNounsList || WordsByNameNounsList.length > 0">Add Word</button>
-                    </div>
-                    <br /><br />
-                </div>
+<div class="tabs-container">
+    <ul class="nav tab-nav" id="pills-tab">
+        <li class="item">
+            <a class="link active" id="pills-home-tab" data-toggle="pill" href="#pills-nouns"aria-selected="true">Nouns</a>
+        </li>
+        <li class="item">
+            <a class="link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"aria-selected="false">Tab 2</a>
+        </li>
+        <li class="item">
+            <a class="link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact"aria-selected="false">Tab 3</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <form [formGroup]="wordForm" (ngSubmit)="onSubmit()">
+            <div class="tab-pane fade show active" id="pills-nouns">
+                    <h4 class="title">Nouns</h4>
+                    <table cellpadding="5px">
+                        <tr>
+                            <td>
+                                <input id="wordPrefixNoun" type="text" formControlName="wordPrefixNoun" (change)="loadWordsByNameNouns(wordPrefixNoun.value)" class="form-control" placeholder="Nouns">
+                            </td>
+                            <td style="padding-bottom: 22px">
+                                <button class="btn btn-primary mt-3" (click)="loadWordsByNameNouns(wordPrefixNoun.value)" style="width: 200px;">Get Words</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select *ngIf="!WordsByNameNounsList || WordsByNameNounsList.length > 0" style="width: 300px" class="form-control">
+                                        <option scope="row" *ngFor="let word of WordsByNameNounsList">{{word.word}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="padding-bottom: 42px">
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameNounsList || WordsByNameNounsList.length > 0" style="width: 200px">Add Word</button>
+                            </td>
+                        </tr>
+                    </table>
             </div>
-        </div>
-    </form>
+            <div class="tab-pane fade" id="pills-profile">
+                <h4 class="title">Another Title</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit unde totam nostrum, sunt accusamus in delectus aspernatur, nisi eligendi ipsum eum! Aspernatur recusandae nihil rem qui quam vero, saepe inventore tempora? Necessitatibus corporis, nam minus reiciendis rerum? Eius voluptatem facilis, vitae minima modi corrupti ullam, temporibus vel eum fugit inventore obcaecati provident ratione, ab aliquid perspiciatis commodi, autem in nemo.</p>
+                <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing.</strong></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit tempore molestiae excepturi commodi ullam provident, optio dicta, nulla officiis consectetur soluta et officia neque odio blanditiis aspernatur cum cumque error?</p>
+            </div>
+            <div class="tab-pane fade" id="pills-contact">
+                <h4 class="title">Some Other </h4>
+                <p>Consectetur amet architecto, temporibus, debitis impedit dolore eius. Enim alias beatae architecto iusto incidunt pariatur reprehenderit impedit ipsum ex at deserunt, inventore corrupti rerum eius obcaecati. Itaque repellendus illum aut beatae ex quasi doloremque voluptatem. Numquam at possimus, obcaecati, voluptas aut vel nam recusandae pariatur error illum quaerat sunt! Ipsam rerum enim hic atque nemo debitis, voluptate obcaecati inventore culpa. Odit adipisci eos natus fugiat. Id, deserunt qui aliquam? Provident tempora repellat, repellendus consequatur quia dolor at dolore temporibus esse in rem ea necessitatibus quo nesciunt eos a dolorum voluptates, tenetur non eius quasi! Autem provident amet, maiores tenetur, eveniet dicta, laborum odio velit sint consequatur beatae nemo at! Aperiam magnam eveniet rerum, optio consequuntur quas maiores ullam necessitatibus nesciunt.</p>
+            </div>
+        </form>
+    </div>
 </div>

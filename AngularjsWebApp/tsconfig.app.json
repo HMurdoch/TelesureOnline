@@ -7,9 +7,17 @@
   },
   "files": [
     "src/main.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "src/app/words.service.ts",
+    "src/app/words-by-name.service.ts",
+    "src/app/app.module.ts",
+    "src/app/app-routing.module.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts",
+    "src/app/words.service.ts",
+    "src/app/words-by-name.service.ts",
+    "src/app/app.module.ts",
+    "src/app/app-routing.module.ts"
   ]
 }
