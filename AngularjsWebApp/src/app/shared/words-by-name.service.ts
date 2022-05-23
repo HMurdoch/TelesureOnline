@@ -24,8 +24,6 @@ export class WordsByNameService {
   GetWordsByNameNouns(prefix: string): Observable<Word> {
     console.log('Getting nouns');
     prefix = prefix.trim();
-    // const options = prefix ?
-    //  { params: new HttpParams().set('prefix', prefix) } : {};
 
     return this.http
       .get<Word>(this.baseurl + '/nouns/' + prefix)
@@ -35,75 +33,57 @@ export class WordsByNameService {
   GetWordsByNameVerbs(prefix: string): Observable<Word> {
     console.log('Getting verbs');
     prefix = prefix.trim();
-    const options = prefix ?
-     { params: new HttpParams().set('prefix', prefix) } : {};
 
     return this.http
-      .get<Word>(this.baseurl + '/verbs/', options)
+      .get<Word>(this.baseurl + '/verbs/' + prefix)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Adjectives
   GetWordsByNameAdjectives(prefix: string): Observable<Word> {
     console.log('Getting adjectives');
     prefix = prefix.trim();
-    const options = prefix ?
-     { params: new HttpParams().set('prefix', prefix) } : {};
 
     return this.http
-      .get<Word>(this.baseurl + '/adjectives/', options)
+      .get<Word>(this.baseurl + '/adjectives/' + prefix)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Adverbs
   GetWordsByNameAdverbs(prefix: string): Observable<Word> {
     console.log('Getting adverbs');
     prefix = prefix.trim();
-    const options = prefix ?
-     { params: new HttpParams().set('prefix', prefix) } : {};
 
     return this.http
-      .get<Word>(this.baseurl + '/adverbs/', options)
+      .get<Word>(this.baseurl + '/adverbs/' + prefix)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Pronouns
   GetWordsByNamePronouns(prefix: string): Observable<Word> {
     console.log('Getting pronouns');
     prefix = prefix.trim();
-    const options = prefix ?
-     { params: new HttpParams().set('prefix', prefix) } : {};
 
     return this.http
-      .get<Word>(this.baseurl + '/pronouns/', options)
+      .get<Word>(this.baseurl + '/pronouns/' + prefix)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Prepositions
   GetWordsByNamePrepositions(prefix: string): Observable<Word> {
     console.log('Getting prepositions');
     prefix = prefix.trim();
-    const options = prefix ?
-     { params: new HttpParams().set('prefix', prefix) } : {};
 
     return this.http
-      .get<Word>(this.baseurl + '/prepositions/', options)
+      .get<Word>(this.baseurl + '/prepositions/' + prefix)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Conjunctions
   GetWordsByNameConjunctions(prefix: string): Observable<Word> {
     console.log('Getting conjunctions');
     prefix = prefix.trim();
-    const options = prefix ?
-     { params: new HttpParams().set('prefix', prefix) } : {};
 
     return this.http
-      .get<Word>(this.baseurl + '/conjunctions/', options)
+      .get<Word>(this.baseurl + '/conjunctions/' + prefix)
       .pipe(retry(1), catchError(this.errorHandle));
   }
 
-//   // GET
-//   GetIssue(id): Observable<Word> {
-//     return this.http
-//       .get<Word>(this.baseurl + '/Wordtracking/' + id)
-//       .pipe(retry(1), catchError(this.errorHandle));
-//   }
 //   // PUT
 //   UpdateWord(id, data): Observable<Word> {
 //     return this.http
