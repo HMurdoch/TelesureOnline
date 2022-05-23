@@ -22,7 +22,7 @@ const pool = new mssql.ConnectionPool(config);
 router.get('/nouns/:prefix', async (req, res) => {
     try {
         pow = "n.";
-        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('%${prefix}%');`;
+        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('${prefix}%');`;
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -37,7 +37,7 @@ router.get('/verbs/:prefix', async (req, res) => {
     try {
         pow = "v.";
         exlcude = "adv."
-        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('%${prefix}%') AND wordtype != 'adv.';`;
+        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('${prefix}%') AND wordtype != 'adv.';`;
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -51,7 +51,7 @@ router.get('/verbs/:prefix', async (req, res) => {
 router.get('/adjectives/:prefix', async (req, res) => {
     try {
         pow = "a.";
-        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('%${prefix}%');`;
+        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('${prefix}%');`;
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -65,7 +65,7 @@ router.get('/adjectives/:prefix', async (req, res) => {
 router.get('/adverbs/:prefix', async (req, res) => {
     try {
         pow = "adv.";
-        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('%${prefix}%');`;
+        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('${prefix}%');`;
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -79,7 +79,7 @@ router.get('/adverbs/:prefix', async (req, res) => {
 router.get('/pronouns/:prefix', async (req, res) => {
     try {
         pow = "pron.";
-        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('%${prefix}%');`;
+        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('${prefix}%');`;
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -93,7 +93,7 @@ router.get('/pronouns/:prefix', async (req, res) => {
 router.get('/prepositions/:prefix', async (req, res) => {
     try {
         pow = "prep.";
-        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('%${prefix}%');`;
+        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('${prefix}%');`;
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -107,7 +107,7 @@ router.get('/prepositions/:prefix', async (req, res) => {
 router.get('/conjunctions/:prefix', async (req, res) => {
     try {
         pow = "conj.";
-        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('%${prefix}%');`;
+        let query = `SELECT word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('${prefix}%');`;
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Word } from './word';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { retry, catchError } from 'rxjs/operators';
 
 export class WordsByNameService {
   // Base url
-  baseurl = 'http://localhost:5000/api/words';
+  baseurl = 'http://localhost:5000/api/words-by-name';
   constructor(private http: HttpClient) {}
 
   // Http Headers
@@ -20,64 +20,81 @@ export class WordsByNameService {
     }),
   };
 
-//   // POST
-//   CreateWord(data): Observable<Word> {
-//     return this.http
-//       .post<Word>(
-//         this.baseurl + '/',
-//         JSON.stringify(data),
-//         this.httpOptions
-//       )
-//       .pipe(retry(1), catchError(this.errorHandle));
-//   }
-
   // GET Nouns
-  GetWordsByNameNouns(): Observable<Word> {
+  GetWordsByNameNouns(prefix: string): Observable<Word> {
     console.log('Getting nouns');
+    prefix = prefix.trim();
+    const options = prefix ?
+     { params: new HttpParams().set('prefix', prefix) } : {};
+
     return this.http
-      .get<Word>(this.baseurl + '/nouns/')
+      .get<Word>(this.baseurl + '/nouns/', options)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Verbs
-  GetWordsByNameVerbs(): Observable<Word> {
+  GetWordsByNameVerbs(prefix: string): Observable<Word> {
     console.log('Getting verbs');
+    prefix = prefix.trim();
+    const options = prefix ?
+     { params: new HttpParams().set('prefix', prefix) } : {};
+
     return this.http
-      .get<Word>(this.baseurl + '/verbs/')
+      .get<Word>(this.baseurl + '/verbs/', options)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Adjectives
-  GetWordsByNameAdjectives(): Observable<Word> {
+  GetWordsByNameAdjectives(prefix: string): Observable<Word> {
     console.log('Getting adjectives');
+    prefix = prefix.trim();
+    const options = prefix ?
+     { params: new HttpParams().set('prefix', prefix) } : {};
+
     return this.http
-      .get<Word>(this.baseurl + '/adjectives/')
+      .get<Word>(this.baseurl + '/adjectives/', options)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Adverbs
-  GetWordsByNameAdverbs(): Observable<Word> {
+  GetWordsByNameAdverbs(prefix: string): Observable<Word> {
     console.log('Getting adverbs');
+    prefix = prefix.trim();
+    const options = prefix ?
+     { params: new HttpParams().set('prefix', prefix) } : {};
+
     return this.http
-      .get<Word>(this.baseurl + '/adverbs/')
+      .get<Word>(this.baseurl + '/adverbs/', options)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Pronouns
-  GetWordsByNamePronouns(): Observable<Word> {
+  GetWordsByNamePronouns(prefix: string): Observable<Word> {
     console.log('Getting pronouns');
+    prefix = prefix.trim();
+    const options = prefix ?
+     { params: new HttpParams().set('prefix', prefix) } : {};
+
     return this.http
-      .get<Word>(this.baseurl + '/pronouns/')
+      .get<Word>(this.baseurl + '/pronouns/', options)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Prepositions
-  GetWordsByNamePrepositions(): Observable<Word> {
+  GetWordsByNamePrepositions(prefix: string): Observable<Word> {
     console.log('Getting prepositions');
+    prefix = prefix.trim();
+    const options = prefix ?
+     { params: new HttpParams().set('prefix', prefix) } : {};
+
     return this.http
-      .get<Word>(this.baseurl + '/prepositions/')
+      .get<Word>(this.baseurl + '/prepositions/', options)
       .pipe(retry(1), catchError(this.errorHandle));
   }
   // GET Conjunctions
-  GetWordsByNameConjunctions(): Observable<Word> {
+  GetWordsByNameConjunctions(prefix: string): Observable<Word> {
     console.log('Getting conjunctions');
+    prefix = prefix.trim();
+    const options = prefix ?
+     { params: new HttpParams().set('prefix', prefix) } : {};
+
     return this.http
-      .get<Word>(this.baseurl + '/conjunctions/')
+      .get<Word>(this.baseurl + '/conjunctions/', options)
       .pipe(retry(1), catchError(this.errorHandle));
   }
 

@@ -28,44 +28,44 @@ export class GetWordsByNameComponent implements OnInit {
     this.loadWordsByNameConjunctions();
   }
 
-  loadWordsByNameNouns() {
-    return this.wordsByNameService.GetWordsByNameNouns().subscribe((data: {}) => {
+  loadWordsByNameNouns(data) {
+    return this.wordsByNameService.GetWordsByNameNouns(data.prefix).subscribe((data: {}) => {
       this.WordsByNameNounsList = data;
     });  
   }
 
-  loadWordsByNameVerbs() {
-    return this.wordsByNameService.GetWordsByNameVerbs().subscribe((data: {}) => {
+  loadWordsByNameVerbs(data) {
+    return this.wordsByNameService.GetWordsByNameVerbs(data.prefix).subscribe((data: {}) => {
       this.WordsByNameVerbsList = data;
     });  
   }
 
-  loadWordsByNameAdjectives() {
-    return this.wordsByNameService.GetWordsByNameAdjectives().subscribe((data: {}) => {
+  loadWordsByNameAdjectives(data) {
+    return this.wordsByNameService.GetWordsByNameAdjectives(data.prefix).subscribe((data: {}) => {
       this.WordsAdjectivesList = data;
     });  
   }
 
-  loadWordsByNameAdverbs() {
-    return this.wordsByNameService.GetWordsByNameAdverbs().subscribe((data: {}) => {
+  loadWordsByNameAdverbs(data) {
+    return this.wordsByNameService.GetWordsByNameAdverbs(data.prefix).subscribe((data: {}) => {
       this.WordsAdverbsList = data;
     });  
   }
 
-  loadWordsByNamePronouns() {
-    return this.wordsByNameService.GetWordsByNamePronouns().subscribe((data: {}) => {
+  loadWordsByNamePronouns(data) {
+    return this.wordsByNameService.GetWordsByNamePronouns(data.prefix).subscribe((data: {}) => {
       this.WordsPronounsList = data;
     });  
   }
 
-  loadWordsByNamePrepositions() {
-    return this.wordsByNameService.GetWordsByNamePrepositions().subscribe((data: {}) => {
+  loadWordsByNamePrepositions(data) {
+    return this.wordsByNameService.GetWordsByNamePrepositions(data.prefix).subscribe((data: {}) => {
       this.WordsPrepositionsList = data;
     });  
   }
 
-  loadWordsByNameConjunctions() {
-    return this.wordsByNameService.GetWordsByNameConjunctions().subscribe((data: {}) => {
+  loadWordsByNameConjunctions(data) {
+    return this.wordsByNameService.GetWordsByNameConjunctions(data.prefix).subscribe((data: {}) => {
       this.WordsConjunctionsList = data;
     });  
   }

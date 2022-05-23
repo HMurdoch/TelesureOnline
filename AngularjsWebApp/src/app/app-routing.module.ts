@@ -6,7 +6,7 @@ import { GetWordsByNameComponent } from './components/get-words-by-name/get-word
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'get-words' },
   { path: 'get-words', component: GetWordsComponent },
-  { path: 'get-words-by-name/:name', component: GetWordsByNameComponent },
+  { path: 'get-words-by-name/:prefix', component: GetWordsByNameComponent },
 ];
 
 @NgModule({
