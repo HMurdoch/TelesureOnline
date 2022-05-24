@@ -23,7 +23,6 @@ router.get('/nouns/:prefix', async (req, res) => {
     try {
         pow = "n.";
         let query = `SELECT DISTINCT TOP 20 word FROM dbo.entries WHERE wordtype LIKE ('%${pow}%') AND word LIKE('${req.params.prefix}%');`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -37,7 +36,6 @@ router.post('/nouns/:word', async (req, res) => {
     try {
         pow = "n.";
         let query = `INSERT INTO dbo.entries (word, wordtype, definition) VALUES ('${req.params.word}', '${pow}', 'Custom word');`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -66,7 +64,6 @@ router.post('/verbs/:word', async (req, res) => {
     try {
         pow = "v.";
         let query = `INSERT INTO dbo.entries (word, wordtype, definition) VALUES ('${req.params.word}', '${pow}', 'Custom word');`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -94,7 +91,6 @@ router.post('/adjectives/:word', async (req, res) => {
     try {
         pow = "a.";
         let query = `INSERT INTO dbo.entries (word, wordtype, definition) VALUES ('${req.params.word}', '${pow}', 'Custom word');`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -122,7 +118,6 @@ router.post('/adverbs/:word', async (req, res) => {
     try {
         pow = "adv.";
         let query = `INSERT INTO dbo.entries (word, wordtype, definition) VALUES ('${req.params.word}', '${pow}', 'Custom word');`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -150,7 +145,6 @@ router.post('/pronouns/:word', async (req, res) => {
     try {
         pow = "pron.";
         let query = `INSERT INTO dbo.entries (word, wordtype, definition) VALUES ('${req.params.word}', '${pow}', 'Custom word');`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -178,7 +172,6 @@ router.post('/prepositions/:word', async (req, res) => {
     try {
         pow = "prep.";
         let query = `INSERT INTO dbo.entries (word, wordtype, definition) VALUES ('${req.params.word}', '${pow}', 'Custom word');`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -206,7 +199,6 @@ router.post('/conjunctions/:word', async (req, res) => {
     try {
         pow = "conj.";
         let query = `INSERT INTO dbo.entries (word, wordtype, definition) VALUES ('${req.params.word}', '${pow}', 'Custom word');`;
-        console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
         const words = result.recordset;
@@ -219,7 +211,7 @@ router.post('/conjunctions/:word', async (req, res) => {
 
 router.get('/sentences', async (req, res) => {
     try {
-        let query = `SELECT sentences FROM dbo.sentences;`;
+        let query = `SELECT sentence FROM dbo.sentences;`;
         await pool.connect();
         const result = await pool.request().query(query);
         const sentences = result.recordset;
@@ -232,7 +224,7 @@ router.get('/sentences', async (req, res) => {
 router.post('/sentences/:sentence', async (req, res) => {
     try {
         pow = "conj.";
-        let query = `INSERT INTO dbo.sentences (sentences) VALUES ('${req.params.sentence}');`;
+        let query = `INSERT INTO dbo.sentences (sentence) VALUES ('${req.params.sentence}');`;
         console.log(query);
         await pool.connect();
         const result = await pool.request().query(query);
