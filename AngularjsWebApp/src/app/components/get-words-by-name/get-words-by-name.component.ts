@@ -4,21 +4,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Word } from './word';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class Service {
-//   constructor(private http: HttpClient) { }
-
-//   opts = [];
-
-//   getData() {
-//     return this.opts.length ?
-//       of(this.opts) :
-//       this.http.get<any>('http://localhost:5000/api/words-by-name/nouns/ab').pipe(tap(data => this.opts = data))
-//   }
-// }
+import { Sentence } from './sentence';
 
 @Component({
   selector: 'app-get-words-by-name',
@@ -36,6 +22,7 @@ export class GetWordsByNameComponent implements OnInit {
   WordsByNamePrepositionsList: any = [];
   WordsByNameConjunctionsList: any = [];
   wordForm: FormGroup;
+  sentenceForm: FormGroup;
   wordNoun: FormControl;
   wordPrefixNoun: FormControl;
   wordVerb: FormControl;
@@ -50,6 +37,8 @@ export class GetWordsByNameComponent implements OnInit {
   wordPrefixPreposition: FormControl;
   wordConjunction: FormControl;
   wordPrefixConjunction: FormControl;
+  sentenceControl: FormControl;
+  sentenceListControl: FormControl;
   NewWord: Word = new Word();
   sentence: string = '';
   
@@ -66,6 +55,7 @@ export class GetWordsByNameComponent implements OnInit {
     this.loadWordsByNamePronouns('A');
     this.loadWordsByNamePrepositions('A');
     this.loadWordsByNameConjunctions('A');
+    this.loadSentences();
   }
 
   createFormControls() {
@@ -83,7 +73,9 @@ export class GetWordsByNameComponent implements OnInit {
     this.wordPrefixPreposition = new FormControl("");
     this.wordConjunction = new FormControl("");
     this.wordPrefixConjunction = new FormControl("");
-    }
+    this.sentenceControl = new FormControl("");
+    this.sentenceListControl = new FormControl("");
+  }
 
   createForm() {
     this.wordForm = new FormGroup({
@@ -100,7 +92,12 @@ export class GetWordsByNameComponent implements OnInit {
       wordPreposition: this.wordPreposition,
       wordPrefixPreposition: this.wordPrefixPreposition,
       wordConjunction: this.wordConjunction,
-      wordPrefixConjunction: this.wordPrefixConjunction,      
+      wordPrefixConjunction: this.wordPrefixConjunction,
+      sentenceControl: this.sentenceControl
+    });
+
+    this.sentenceForm = new FormGroup({
+      sentenceControl: this.sentenceListControl
     });
   }
 
@@ -108,9 +105,10 @@ export class GetWordsByNameComponent implements OnInit {
     //this.loadWordsByNameNouns(this.wordForm.controls['wordPrefixNoun'].value)
   }
 
-  addWordNounToSentence() {
+  addWordNounToSentence(word: string) {
     console.log('Adding word');
-    this.sentence = this.sentence + this.wordForm.controls['wordNoun'].value + ' ';
+    this.sentence = this.sentence + word + ' ';
+    this.sentenceControl.setValue(this.sentence);
   }
   loadWordsByNameNouns(prefix: string) {
     return this.wordsByNameService.GetWordsByNameNouns(prefix).subscribe((data: {}) => {
@@ -128,9 +126,10 @@ export class GetWordsByNameComponent implements OnInit {
     return newdata;
   }
 
-  addWordVerbToSentence() {
+  addWordVerbToSentence(word: string) {
     console.log('Adding word');
-    this.sentence = this.sentence + this.wordForm.controls['wordVerb'].value + ' ';
+    this.sentence = this.sentence + word + ' ';
+    this.sentenceControl.setValue(this.sentence);
   }
   loadWordsByNameVerbs(prefix: string) {
     return this.wordsByNameService.GetWordsByNameVerbs(prefix).subscribe((data: {}) => {
@@ -148,9 +147,10 @@ export class GetWordsByNameComponent implements OnInit {
     return newdata;
   }
 
-  addWordAdjectiveToSentence() {
+  addWordAdjectiveToSentence(word: string) {
     console.log('Adding word');
-    this.sentence = this.sentence + this.wordForm.controls['wordAdjective'].value + ' ';
+    this.sentence = this.sentence + word + ' ';
+    this.sentenceControl.setValue(this.sentence);
   }
   loadWordsByNameAdjectives(prefix: string) {
     return this.wordsByNameService.GetWordsByNameAdjectives(prefix).subscribe((data: {}) => {
@@ -168,9 +168,10 @@ export class GetWordsByNameComponent implements OnInit {
     return newdata;
   }
 
-  addWordAdverbToSentence() {
+  addWordAdverbToSentence(word: string) {
     console.log('Adding word');
-    this.sentence = this.sentence + this.wordForm.controls['wordAdverb'].value + ' ';
+    this.sentence = this.sentence + word + ' ';
+    this.sentenceControl.setValue(this.sentence);
   }
   loadWordsByNameAdverbs(prefix: string) {
     return this.wordsByNameService.GetWordsByNameAdverbs(prefix).subscribe((data: {}) => {
@@ -188,9 +189,10 @@ export class GetWordsByNameComponent implements OnInit {
     return newdata;
   }
 
-  addWordPronounToSentence() {
+  addWordPronounToSentence(word: string) {
     console.log('Adding word');
-    this.sentence = this.sentence + this.wordForm.controls['wordPronoun'].value + ' ';
+    this.sentence = this.sentence + word + ' ';
+    this.sentenceControl.setValue(this.sentence);
   }
   loadWordsByNamePronouns(prefix: string) {
     return this.wordsByNameService.GetWordsByNamePronouns(prefix).subscribe((data: {}) => {
@@ -208,9 +210,10 @@ export class GetWordsByNameComponent implements OnInit {
     return newdata;
   }
 
-  addWordPrepositionToSentence() {
+  addWordPrepositionToSentence(word: string) {
     console.log('Adding word');
-    this.sentence = this.sentence + this.wordForm.controls['wordPreposition'].value + ' ';
+    this.sentence = this.sentence + word + ' ';
+    this.sentenceControl.setValue(this.sentence);
   }
   loadWordsByNamePrepositions(prefix: string) {
     return this.wordsByNameService.GetWordsByNamePrepositions(prefix).subscribe((data: {}) => {
@@ -228,9 +231,10 @@ export class GetWordsByNameComponent implements OnInit {
     return newdata;
   }
 
-  addWordConjunctionToSentence() {
+  addWordConjunctionToSentence(word: string) {
     console.log('Adding word');
-    this.sentence = this.sentence + this.wordForm.controls['wordConjunction'].value + ' ';
+    this.sentence = this.sentence + word + ' ';
+    this.sentenceControl.setValue(this.sentence);
   }
   loadWordsByNameConjunctions(prefix: string) {
     return this.wordsByNameService.GetWordsByNameConjunctions(prefix).subscribe((data: {}) => {
@@ -249,14 +253,20 @@ export class GetWordsByNameComponent implements OnInit {
   }  
 
   loadSentences() {
-    return this.wordsByNameService.GetSentencesFromDatabase().subscribe((data: {}) => {
+    console.log('Loading sentences...')
+    var returnData = this.wordsByNameService.GetSentencesFromDatabase().subscribe((data: {}) => {
       this.SentencesList = data;
-    });  
-  }
-  postSentenceToDatabase() {
-    var newdata = this.wordsByNameService.PostSentenceToDatabase(this.sentence).subscribe((data: {}) => {
     });
-    this.loadSentences();
+    return returnData; 
+  }
+  changeSentence(sentence: string){
+    console.log('Sentence:' + sentence)
+    this.sentence = sentence;
+  }
+  postSentenceToDatabase(sentence: string) {
+    var newdata = this.wordsByNameService.PostSentenceToDatabase(sentence).subscribe((data: {}) => {
+      this.ngOnInit();
+    });
     return newdata;
   }
 }

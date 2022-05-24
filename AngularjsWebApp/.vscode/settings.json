@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true
+            },
+            "previewLimit": 50,
+            "server": "telesure-server-01.database.windows.net",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "Telesure Azure SQL",
+            "database": "telesure-sql-01",
+            "username": "adminroot",
+            "password": "P@$$w0rd"
+        }
+    ]
+}

@@ -24,8 +24,8 @@
                 <a class="link" id="pills-home-tab" data-toggle="pill" href="#pills-conjunctions"aria-selected="true" style="height:40px !important; line-height: 40px !important; font-size: 12px !important">Conjunctions</a>
             </li>
         </ul>
-        <div class="tab-content">
-            <form [formGroup]="wordForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="wordForm" (ngSubmit)="onSubmit()">
+            <div class="tab-content">
                 <div class="tab-pane fade show active" id="pills-nouns">
                         <h4 class="title">Nouns</h4>
                         <table style="margin:0px !important">
@@ -52,7 +52,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordNounToSentence()">Add Word To Sentence</button>
+                                    <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordNounToSentence(wordNoun.value)">Add Word To Sentence</button>
                                 </td>
                             </tr>
                         </table>
@@ -83,7 +83,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordVerbToSentence()">Add Word To Sentence</button>
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordVerbToSentence(wordVerb.value)">Add Word To Sentence</button>
                             </td>
                         </tr>
                     </table>
@@ -114,7 +114,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordAdjectiveToSentence()">Add Word To Sentence</button>
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordAdjectiveToSentence(wordAdjective.value)">Add Word To Sentence</button>
                             </td>
                         </tr>
                     </table>
@@ -145,7 +145,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordAdverbToSentence()">Add Word To Sentence</button>
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordAdverbToSentence(wordAdverb.value)">Add Word To Sentence</button>
                             </td>
                         </tr>
                     </table>
@@ -176,7 +176,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordPronounToSentence()">Add Word To Sentence</button>
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordPronounToSentence(wordPronoun.value)">Add Word To Sentence</button>
                             </td>
                         </tr>
                     </table>
@@ -207,7 +207,7 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordPrepositionToSentence()">Add Word To Sentence</button>
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordPrepositionToSentence(wordPreposition.value)">Add Word To Sentence</button>
                             </td>
                         </tr>
                     </table>
@@ -238,29 +238,48 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordConjunctionToSentence()">Add Word To Sentence</button>
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordConjunctionToSentence(wordConjunction.value)">Add Word To Sentence</button>
                             </td>
                         </tr>
                     </table>
                 </div>
-            </form>
-        </div>
+            </div>
 
-        <div class="col-lg-4 d-none d-lg-block align-self-center" style="bottom: 23px">
-            <table>
-                <tr>
-                    <td align="center">
-                        <label class="form-control" style="width:450px;height:200px;font-size:12px">{{sentence}}</label>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td align="center">
-                        <button class="btn btn-primary mt-3" style="width: 400px" (click)="postSentenceToDatabase()">Add Sentence To Database</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
+            <div class="col-lg-4 d-none d-lg-block align-self-center" style="bottom: 23px">
+                <table>
+                    <tr>
+                        <td align="left">
+                            <textarea class="form-control" style="width:450px;height:200px;font-size:12px" formControlName="sentenceControl" (change)="changeSentence(sentenceControl.value)">{{sentence}}</textarea>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td align="center">
+                            <button class="btn btn-primary mt-3" style="width: 400px" [disabled]="sentenceControl.value.trim().length === 0" (click)="postSentenceToDatabase(sentenceControl.value)">Add Sentence To Database</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
     </div>
+    <div class="container">
+        <form [formGroup]="sentenceForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-between">
+            <div>
+                <h6 class="title">Sentences</h6>
+                <p>Listing of all sentences in Database</p>
+                <ul class="list-unstyled mt-4" *ngFor="let sentences of SentencesList">
+                    <li class="media" style="height:10px">
+                        <div class="circle-40 mr-3 mt-1" style="width: 28px !important; height: 28px !important; line-height:26px !important"><i class="ti-face-smile"></i></div>
+                        <div class="media-body" style="padding-top: 6px">
+                            <p style="font-size: 14px">{{sentences.sentences}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </form>
+    </div>
+
 </div>
 

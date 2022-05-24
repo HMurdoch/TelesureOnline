@@ -140,16 +140,16 @@ export class WordsByNameService {
       .pipe(retry(1), catchError(this.errorHandle));
   }
 
-  // GET Conjunctions
+  // GET Sentences
   GetSentencesFromDatabase(): Observable<Sentence> {
     console.log('Getting sentences');
     return this.http
       .get<Sentence>(this.baseurl + '/sentences/')
       .pipe(retry(1), catchError(this.errorHandle));
   }
-  // POST Conjunctions
+  // POST Sentence
   PostSentenceToDatabase(sentence: string): Observable<Word> {
-    console.log('Posting conjunction');
+    console.log('Posting sentence');
     return this.http
       .post<Word>(this.baseurl + '/sentences/' + sentence, { title: 'Telesure POST Sentence' })
       .pipe(retry(1), catchError(this.errorHandle));
