@@ -34,7 +34,7 @@
                                     <input id="wordPrefixNoun" type="text" formControlName="wordPrefixNoun" (change)="loadWordsByNameNouns(wordPrefixNoun.value)" class="form-control" placeholder="Nouns" style="width:300px;">
                                 </td>
                                 <td style="padding-bottom: 18px">
-                                    <button class="btn btn-primary mt-3" (click)="loadWordsByNameNouns(wordPrefixNoun.value)" style="width: 200px;">Get Dictionary Words</button>
+                                    <button class="btn btn-primary mt-3" (click)="loadWordsByNameNouns(wordPrefixNoun.value)" style="width: 200px;">Search Dictionary Words</button>
                                 </td>
                             </tr>
                             <tr>
@@ -52,28 +52,214 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordToSentence()">Add Word To Sentence</button>
+                                    <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordNounToSentence()">Add Word To Sentence</button>
                                 </td>
                             </tr>
                         </table>
                 </div>
-                <div class="tab-pane fade" id="pills-profile">
-                    <h4 class="title">Another Title</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit unde totam nostrum, sunt accusamus in delectus aspernatur, nisi eligendi ipsum eum! Aspernatur recusandae nihil rem qui quam vero, saepe inventore tempora? Necessitatibus corporis, nam minus reiciendis rerum? Eius voluptatem facilis, vitae minima modi corrupti ullam, temporibus vel eum fugit inventore obcaecati provident ratione, ab aliquid perspiciatis commodi, autem in nemo.</p>
-                    <p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing.</strong></p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit tempore molestiae excepturi commodi ullam provident, optio dicta, nulla officiis consectetur soluta et officia neque odio blanditiis aspernatur cum cumque error?</p>
+                <div class="tab-pane fade" id="pills-verbs">
+                    <h4 class="title">Verbs</h4>
+                    <table style="margin:0px !important">
+                        <tr>
+                            <td>
+                                <input id="wordPrefixVerb" type="text" formControlName="wordPrefixVerb" (change)="loadWordsByNameVerbs(wordPrefixVerb.value)" class="form-control" placeholder="Verbs" style="width:300px;">
+                            </td>
+                            <td style="padding-bottom: 18px">
+                                <button class="btn btn-primary mt-3" (click)="loadWordsByNameVerbs(wordPrefixVerb.value)" style="width: 200px;">Search Dictionary Words</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select *ngIf="!WordsByNameVerbsList || WordsByNameVerbsList.length > 0" style="width: 300px" class="form-control" formControlName="wordVerb" id="wordVerb">
+                                        <option selected value="">Please Select Word</option>
+                                        <option scope="row" *ngFor="let word of WordsByNameVerbsList" [value]="word.word">{{word.word}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="padding-bottom: 34px">
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameVerbsList || WordsByNameVerbsList.length > 0" style="width: 200px" (click)="postWordVerb(wordPrefixVerb.value)">Dictionary Add Word</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordVerbToSentence()">Add Word To Sentence</button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="tab-pane fade" id="pills-contact">
-                    <h4 class="title">Some Other </h4>
-                    <p>Consectetur amet architecto, temporibus, debitis impedit dolore eius. Enim alias beatae architecto iusto incidunt pariatur reprehenderit impedit ipsum ex at deserunt, inventore corrupti rerum eius obcaecati. Itaque repellendus illum aut beatae ex quasi doloremque voluptatem. Numquam at possimus, obcaecati, voluptas aut vel nam recusandae pariatur error illum quaerat sunt! Ipsam rerum enim hic atque nemo debitis, voluptate obcaecati inventore culpa. Odit adipisci eos natus fugiat. Id, deserunt qui aliquam? Provident tempora repellat, repellendus consequatur quia dolor at dolore temporibus esse in rem ea necessitatibus quo nesciunt eos a dolorum voluptates, tenetur non eius quasi! Autem provident amet, maiores tenetur, eveniet dicta, laborum odio velit sint consequatur beatae nemo at! Aperiam magnam eveniet rerum, optio consequuntur quas maiores ullam necessitatibus nesciunt.</p>
+                <div class="tab-pane fade" id="pills-adjectives">
+                    <h4 class="title">Adjectives</h4>
+                    <table style="margin:0px !important">
+                        <tr>
+                            <td>
+                                <input id="wordPrefixAdjective" type="text" formControlName="wordPrefixAdjective" (change)="loadWordsByNameAdjectives(wordPrefixAdjective.value)" class="form-control" placeholder="Adjectives" style="width:300px;">
+                            </td>
+                            <td style="padding-bottom: 18px">
+                                <button class="btn btn-primary mt-3" (click)="loadWordsByNameAdjectives(wordPrefixAdjective.value)" style="width: 200px;">Search Dictionary Words</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select *ngIf="!WordsByNameAdjectivesList || WordsByNameAdjectivesList.length > 0" style="width: 300px" class="form-control" formControlName="wordAdjective" id="wordAdjective">
+                                        <option selected value="">Please Select Word</option>
+                                        <option scope="row" *ngFor="let word of WordsByNameAdjectivesList" [value]="word.word">{{word.word}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="padding-bottom: 34px">
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameAdjectivesList || WordsByNameAdjectivesList.length > 0" style="width: 200px" (click)="postWordAdjective(wordPrefixAdjective.value)">Dictionary Add Word</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordAdjectiveToSentence()">Add Word To Sentence</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-adverbs">
+                    <h4 class="title">Adverbs</h4>
+                    <table style="margin:0px !important">
+                        <tr>
+                            <td>
+                                <input id="wordPrefixAdverb" type="text" formControlName="wordPrefixAdverb" (change)="loadWordsByNameAdverbs(wordPrefixAdverb.value)" class="form-control" placeholder="Adverbs" style="width:300px;">
+                            </td>
+                            <td style="padding-bottom: 18px">
+                                <button class="btn btn-primary mt-3" (click)="loadWordsByNameAdverbs(wordPrefixAdverb.value)" style="width: 200px;">Search Dictionary Words</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select *ngIf="!WordsByNameAdverbsList || WordsByNameAdverbsList.length > 0" style="width: 300px" class="form-control" formControlName="wordAdverb" id="wordAdverb">
+                                        <option selected value="">Please Select Word</option>
+                                        <option scope="row" *ngFor="let word of WordsByNameAdverbsList" [value]="word.word">{{word.word}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="padding-bottom: 34px">
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameAdverbsList || WordsByNameAdverbsList.length > 0" style="width: 200px" (click)="postWordAdverb(wordPrefixAdverb.value)">Dictionary Add Word</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordAdverbToSentence()">Add Word To Sentence</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-pronouns">
+                    <h4 class="title">Pronouns</h4>
+                    <table style="margin:0px !important">
+                        <tr>
+                            <td>
+                                <input id="wordPrefixPronoun" type="text" formControlName="wordPrefixPronoun" (change)="loadWordsByNamePronouns(wordPrefixPronoun.value)" class="form-control" placeholder="Pronouns" style="width:300px;">
+                            </td>
+                            <td style="padding-bottom: 18px">
+                                <button class="btn btn-primary mt-3" (click)="loadWordsByNamePronouns(wordPrefixPronoun.value)" style="width: 200px;">Search Dictionary Words</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select *ngIf="!WordsByNamePronounsList || WordsByNamePronounsList.length > 0" style="width: 300px" class="form-control" formControlName="wordPronoun" id="wordPronoun">
+                                        <option selected value="">Please Select Word</option>
+                                        <option scope="row" *ngFor="let word of WordsByNamePronounsList" [value]="word.word">{{word.word}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="padding-bottom: 34px">
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNamePronounsList || WordsByNamePronounsList.length > 0" style="width: 200px" (click)="postWordPronoun(wordPrefixPronoun.value)">Dictionary Add Word</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordPronounToSentence()">Add Word To Sentence</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-prepositions">
+                    <h4 class="title">Prepositions</h4>
+                    <table style="margin:0px !important">
+                        <tr>
+                            <td>
+                                <input id="wordPrefixPreposition" type="text" formControlName="wordPrefixPreposition" (change)="loadWordsByNamePrepositions(wordPrefixPreposition.value)" class="form-control" placeholder="Prepositions" style="width:300px;">
+                            </td>
+                            <td style="padding-bottom: 18px">
+                                <button class="btn btn-primary mt-3" (click)="loadWordsByNamePrepositions(wordPrefixPreposition.value)" style="width: 200px;">Search Dictionary Words</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select *ngIf="!WordsByNamePrepositionsList || WordsByNamePrepositionsList.length > 0" style="width: 300px" class="form-control" formControlName="wordPreposition" id="wordPreposition">
+                                        <option selected value="">Please Select Word</option>
+                                        <option scope="row" *ngFor="let word of WordsByNamePrepositionsList" [value]="word.word">{{word.word}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="padding-bottom: 34px">
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNamePrepositionsList || WordsByNamePrepositionsList.length > 0" style="width: 200px" (click)="postWordPreposition(wordPrefixPreposition.value)">Dictionary Add Word</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordPrepositionToSentence()">Add Word To Sentence</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="pills-conjunctions">
+                    <h4 class="title">Conjunctions</h4>
+                    <table style="margin:0px !important">
+                        <tr>
+                            <td>
+                                <input id="wordPrefixConjunction" type="text" formControlName="wordPrefixConjunction" (change)="loadWordsByNameConjunctions(wordPrefixConjunction.value)" class="form-control" placeholder="Conjunctions" style="width:300px;">
+                            </td>
+                            <td style="padding-bottom: 18px">
+                                <button class="btn btn-primary mt-3" (click)="loadWordsByNameConjunctions(wordPrefixConjunction.value)" style="width: 200px;">Search Dictionary Words</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <select *ngIf="!WordsByNameConjunctionsList || WordsByNameConjunctionsList.length > 0" style="width: 300px" class="form-control" formControlName="wordConjunction" id="wordConjunction">
+                                        <option selected value="">Please Select Word</option>
+                                        <option scope="row" *ngFor="let word of WordsByNameConjunctionsList" [value]="word.word">{{word.word}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td style="padding-bottom: 34px">
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameConjunctionsList || WordsByNameConjunctionsList.length > 0" style="width: 200px" (click)="postWordConjunction(wordPrefixConjunction.value)">Dictionary Add Word</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="center">
+                                <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordConjunctionToSentence()">Add Word To Sentence</button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </form>
         </div>
 
-        <div class="col-lg-4 d-none d-lg-block align-self-center">
-            <div style="vertical-align: top">
-                <label class="form-control" style="width:450px;height:400px;font-size:12px">{{sentence}}</label>
-            </div>
+        <div class="col-lg-4 d-none d-lg-block align-self-center" style="bottom: 23px">
+            <table>
+                <tr>
+                    <td align="center">
+                        <label class="form-control" style="width:450px;height:200px;font-size:12px">{{sentence}}</label>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td align="center">
+                        <button class="btn btn-primary mt-3" style="width: 400px" (click)="postSentenceToDatabase()">Add Sentence To Database</button>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
