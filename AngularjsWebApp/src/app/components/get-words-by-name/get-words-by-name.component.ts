@@ -267,6 +267,7 @@ export class GetWordsByNameComponent implements OnInit {
     var newdata = this.wordsByNameService.PostSentenceToDatabase(sentence).subscribe((data: {}) => {
       this.ngOnInit();
     });
+    this.sentence = '';
     return newdata;
   }
 }

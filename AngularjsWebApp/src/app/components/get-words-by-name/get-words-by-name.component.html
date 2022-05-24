@@ -1,5 +1,5 @@
 <div>
-    <div class="col-lg-8">
+    <div class="col-lg-8" style="margin-bottom: 100px">
         <div class="tabs-container">
         <ul class="nav tab-nav" id="pills-tab">
             <li class="item">
@@ -47,7 +47,7 @@
                                     </div>
                                 </td>
                                 <td style="padding-bottom: 34px">
-                                    <button class="btn btn-primary mt-3" [disabled]="!WordsByNameNounsList || WordsByNameNounsList.length > 0" style="width: 200px" (click)="postWordNoun(wordPrefixNoun.value)">Dictionary Add Word</button>
+                                    <button class="btn btn-primary mt-3" [disabled]="!WordsByNameNounsList || WordsByNameNounsList.length > 0" style="width: 200px" (click)="postWordNoun(wordPrefixNoun.value)">Add Dictionary Word</button>
                                 </td>
                             </tr>
                             <tr>
@@ -78,7 +78,7 @@
                                 </div>
                             </td>
                             <td style="padding-bottom: 34px">
-                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameVerbsList || WordsByNameVerbsList.length > 0" style="width: 200px" (click)="postWordVerb(wordPrefixVerb.value)">Dictionary Add Word</button>
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameVerbsList || WordsByNameVerbsList.length > 0" style="width: 200px" (click)="postWordVerb(wordPrefixVerb.value)">Add Dictionary Word</button>
                             </td>
                         </tr>
                         <tr>
@@ -109,7 +109,7 @@
                                 </div>
                             </td>
                             <td style="padding-bottom: 34px">
-                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameAdjectivesList || WordsByNameAdjectivesList.length > 0" style="width: 200px" (click)="postWordAdjective(wordPrefixAdjective.value)">Dictionary Add Word</button>
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameAdjectivesList || WordsByNameAdjectivesList.length > 0" style="width: 200px" (click)="postWordAdjective(wordPrefixAdjective.value)">Add Dictionary Word</button>
                             </td>
                         </tr>
                         <tr>
@@ -140,7 +140,7 @@
                                 </div>
                             </td>
                             <td style="padding-bottom: 34px">
-                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameAdverbsList || WordsByNameAdverbsList.length > 0" style="width: 200px" (click)="postWordAdverb(wordPrefixAdverb.value)">Dictionary Add Word</button>
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameAdverbsList || WordsByNameAdverbsList.length > 0" style="width: 200px" (click)="postWordAdverb(wordPrefixAdverb.value)">Add Dictionary Word</button>
                             </td>
                         </tr>
                         <tr>
@@ -171,7 +171,7 @@
                                 </div>
                             </td>
                             <td style="padding-bottom: 34px">
-                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNamePronounsList || WordsByNamePronounsList.length > 0" style="width: 200px" (click)="postWordPronoun(wordPrefixPronoun.value)">Dictionary Add Word</button>
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNamePronounsList || WordsByNamePronounsList.length > 0" style="width: 200px" (click)="postWordPronoun(wordPrefixPronoun.value)">Add Dictionary Word</button>
                             </td>
                         </tr>
                         <tr>
@@ -202,7 +202,7 @@
                                 </div>
                             </td>
                             <td style="padding-bottom: 34px">
-                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNamePrepositionsList || WordsByNamePrepositionsList.length > 0" style="width: 200px" (click)="postWordPreposition(wordPrefixPreposition.value)">Dictionary Add Word</button>
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNamePrepositionsList || WordsByNamePrepositionsList.length > 0" style="width: 200px" (click)="postWordPreposition(wordPrefixPreposition.value)">Add Dictionary Word</button>
                             </td>
                         </tr>
                         <tr>
@@ -233,7 +233,7 @@
                                 </div>
                             </td>
                             <td style="padding-bottom: 34px">
-                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameConjunctionsList || WordsByNameConjunctionsList.length > 0" style="width: 200px" (click)="postWordConjunction(wordPrefixConjunction.value)">Dictionary Add Word</button>
+                                <button class="btn btn-primary mt-3" [disabled]="!WordsByNameConjunctionsList || WordsByNameConjunctionsList.length > 0" style="width: 200px" (click)="postWordConjunction(wordPrefixConjunction.value)">Add Dictionary Word</button>
                             </td>
                         </tr>
                         <tr>
@@ -245,11 +245,11 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 d-none d-lg-block align-self-center" style="bottom: 23px">
+            <div class="col-lg-4 d-none d-lg-block align-self-center" style="top: 89px; position: absolute; left: 700px">
                 <table>
                     <tr>
                         <td align="left">
-                            <textarea class="form-control" style="width:450px;height:200px;font-size:12px" formControlName="sentenceControl" (change)="changeSentence(sentenceControl.value)">{{sentence}}</textarea>
+                            <textarea class="form-control" style="width:450px;height:145px;font-size:12px" formControlName="sentenceControl" (change)="changeSentence(sentenceControl.value)">{{sentence}}</textarea>
                         </td>
                     </tr>
                     
@@ -262,23 +262,23 @@
             </div>
         </form>
     </div>
-    <div class="container">
-        <form [formGroup]="sentenceForm" (ngSubmit)="onSubmit()">
+    <div class="container" style="width:1000px">
         <div class="row justify-content-between">
             <div>
-                <h6 class="title">Sentences</h6>
-                <p>Listing of all sentences in Database</p>
-                <ul class="list-unstyled mt-4" *ngFor="let sentences of SentencesList">
-                    <li class="media" style="height:10px">
-                        <div class="circle-40 mr-3 mt-1" style="width: 28px !important; height: 28px !important; line-height:26px !important"><i class="ti-face-smile"></i></div>
-                        <div class="media-body" style="padding-top: 6px">
-                            <p style="font-size: 14px">{{sentences.sentences}}</p>
-                        </div>
-                    </li>
-                </ul>
+                <form [formGroup]="sentenceForm" (ngSubmit)="onSubmit()">
+                    <h6 class="title">Sentences</h6>
+                    <p>Listing of all sentences in Database</p>
+                    <ul class="list-unstyled mt-4" *ngFor="let sentence of SentencesList">
+                        <li class="media" style="height:10px">
+                            <div class="circle-40 mr-3 mt-1" style="width: 28px !important; height: 28px !important; line-height:26px !important"><i class="ti-face-smile"></i></div>
+                            <div class="media-body" style="padding-top: 6px">
+                                <p style="font-size: 14px">{{sentence.sentence}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </form>
             </div>
         </div>
-        </form>
     </div>
 
 </div>
