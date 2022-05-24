@@ -34,6 +34,21 @@ router.get('/nouns/:prefix', async (req, res) => {
     }
 });
 
+router.post('/nouns/:word', async (req, res) => {
+    try {
+        pow = "n.";
+        let query = `INSERT INTO dbo.entries (word, wordtype, definition) VALUES ('${req.params.word}', '${pow}', 'Custom word');`;
+        console.log(query);
+        await pool.connect();
+        const result = await pool.request().query(query);
+        const words = result.recordset;
+
+        res.status(200).json(words);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
 router.get('/verbs/:prefix', async (req, res) => {
     try {
         pow = "v.";

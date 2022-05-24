@@ -29,6 +29,13 @@ export class WordsByNameService {
       .get<Word>(this.baseurl + '/nouns/' + prefix)
       .pipe(retry(1), catchError(this.errorHandle));
   }
+  // POST Noun
+  PostWordNoun(word: string): Observable<Word> {
+    console.log('Posting noun');
+    return this.http
+      .post<Word>(this.baseurl + '/nouns/' + word, { title: 'Telesure POST Noun' })
+      .pipe(retry(1), catchError(this.errorHandle));
+  }
   // GET Verbs
   GetWordsByNameVerbs(prefix: string): Observable<Word> {
     console.log('Getting verbs');

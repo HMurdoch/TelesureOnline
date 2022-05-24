@@ -1,6 +1,9 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { WordsByNameService } from '../../shared/words-by-name.service';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Word } from './word';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 
 // @Injectable({
 //   providedIn: 'root'
@@ -32,7 +35,10 @@ export class GetWordsByNameComponent implements OnInit {
   WordsPrepositionsList: any = [];
   WordsConjunctionsList: any = [];
   wordForm: FormGroup;
+  wordNoun: FormControl;
   wordPrefixNoun: FormControl;
+  NewWord: Word = new Word();
+
   
   constructor(public wordsByNameService: WordsByNameService, public formBuilder: FormBuilder) {
   }
@@ -50,11 +56,13 @@ export class GetWordsByNameComponent implements OnInit {
   }
 
   createFormControls() {
+    this.wordNoun = new FormControl("");
     this.wordPrefixNoun = new FormControl("");
   }
 
   createForm() {
     this.wordForm = new FormGroup({
+      wordNoun: this.wordNoun,
       wordPrefixNoun: this.wordPrefixNoun
     });
   }
@@ -67,6 +75,18 @@ export class GetWordsByNameComponent implements OnInit {
     return this.wordsByNameService.GetWordsByNameNouns(prefix).subscribe((data: {}) => {
       this.WordsByNameNounsList = data;
     });  
+  }
+
+  postWordNoun(word: string) {
+    this.NewWord.word = word;
+    this.NewWord.wordtype = 'n.';
+    this.NewWord.definition = 'Custom word';
+    var newdata = this.wordsByNameService.PostWordNoun(word).subscribe((data: {}) => {
+      
+    });
+    this.loadWordsByNameNouns(word);
+    this.wordForm.controls["wordNoun"][0].value = word;
+    return newdata;
   }
 
   loadWordsByNameVerbs(prefix: string) {
