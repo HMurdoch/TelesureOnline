@@ -40,8 +40,9 @@
                             <tr>
                                 <td>
                                     <div class="form-group">
-                                        <select *ngIf="!WordsByNameNounsList || WordsByNameNounsList.length > 0" style="width: 300px" class="form-control" formControlName="wordNoun">
-                                            <option scope="row" *ngFor="let word of WordsByNameNounsList">{{word.word}}</option>
+                                        <select *ngIf="!WordsByNameNounsList || WordsByNameNounsList.length > 0" style="width: 300px" class="form-control" formControlName="wordNoun" id="wordNoun">
+                                            <option selected value="">Please Select Word</option>
+                                            <option scope="row" *ngFor="let word of WordsByNameNounsList" [value]="word.word">{{word.word}}</option>
                                         </select>
                                     </div>
                                 </td>
@@ -51,7 +52,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <button class="btn btn-primary mt-3" style="width: 300px">Add Word To Sentence</button>
+                                    <button class="btn btn-primary mt-3" style="width: 300px" (click)="addWordToSentence()">Add Word To Sentence</button>
                                 </td>
                             </tr>
                         </table>
@@ -71,8 +72,7 @@
 
         <div class="col-lg-4 d-none d-lg-block align-self-center">
             <div style="vertical-align: top">
-                <textarea id="sentence" type="text" formControlName="sentence" (change)="loadWordsByNameNouns(wordPrefixNoun.value)" class="form-control" style="width:450px;height:300px">
-                </textarea>
+                <label class="form-control" style="width:450px;height:400px;font-size:12px">{{sentence}}</label>
             </div>
         </div>
     </div>

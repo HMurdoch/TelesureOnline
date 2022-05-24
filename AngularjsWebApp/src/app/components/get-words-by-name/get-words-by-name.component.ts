@@ -38,7 +38,7 @@ export class GetWordsByNameComponent implements OnInit {
   wordNoun: FormControl;
   wordPrefixNoun: FormControl;
   NewWord: Word = new Word();
-
+  sentence: string = '';
   
   constructor(public wordsByNameService: WordsByNameService, public formBuilder: FormBuilder) {
   }
@@ -71,6 +71,11 @@ export class GetWordsByNameComponent implements OnInit {
     //this.loadWordsByNameNouns(this.wordForm.controls['wordPrefixNoun'].value)
   }
 
+  addWordToSentence() {
+    console.log('Adding word');
+    this.sentence = this.sentence + this.wordForm.controls['wordNoun'].value + ' ';
+  }
+
   loadWordsByNameNouns(prefix: string) {
     return this.wordsByNameService.GetWordsByNameNouns(prefix).subscribe((data: {}) => {
       this.WordsByNameNounsList = data;
@@ -85,7 +90,6 @@ export class GetWordsByNameComponent implements OnInit {
       
     });
     this.loadWordsByNameNouns(word);
-    this.wordForm.controls["wordNoun"][0].value = word;
     return newdata;
   }
 
